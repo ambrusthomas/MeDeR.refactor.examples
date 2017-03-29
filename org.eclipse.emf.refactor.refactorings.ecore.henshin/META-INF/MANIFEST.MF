@@ -23,6 +23,6 @@ Bundle-Activator: org.eclipse.emf.refactor.refactorings.ecore.henshin.
  Activator
 Bundle-SymbolicName: org.eclipse.emf.refactor.refactorings.ecore.hensh
  in;singleton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.emf.compare.util
 

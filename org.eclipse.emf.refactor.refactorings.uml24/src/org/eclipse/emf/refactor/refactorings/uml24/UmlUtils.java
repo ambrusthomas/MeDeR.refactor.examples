@@ -24,9 +24,9 @@ import org.eclipse.uml2.uml.VisibilityKind;
 
 public abstract class UmlUtils {
 
-	public static boolean haveSameSignatures(Operation op1, Operation op2) { // 23
-		EList<Parameter> inputParametersOp1 = getInputParameterList(op1.getOwnedParameters());
-		EList<Parameter> inputParametersOp2 = getInputParameterList(op2.getOwnedParameters());
+	public static boolean haveSameProperties(List<Parameter> parL1, List<Parameter> parL2) { // 23
+		EList<Parameter> inputParametersOp1 = getInputParameterList(parL1);
+		EList<Parameter> inputParametersOp2 = getInputParameterList(parL2);
 		if (inputParametersOp1.size() != inputParametersOp2.size()) return false;
 		for (int i=0; i < inputParametersOp1.size(); i++) {
 			Parameter par1 = inputParametersOp1.get(i);
@@ -63,7 +63,7 @@ public abstract class UmlUtils {
 	}
 
 	public static EList<Parameter> getInputParameterList( // 5
-			EList<Parameter> parameters) {
+			List<Parameter> parameters) {
 		EList<Parameter> inputParameterList = new BasicEList<Parameter>();
 		for (Parameter param : parameters) {
 			if (param.getDirection().getValue() != ParameterDirectionKind.RETURN) {
@@ -562,7 +562,7 @@ public abstract class UmlUtils {
 					Operation op = (Operation) ne;
 					if (haveSameNames(op, operation)
 							&& haveSameType(op, operation)
-							&& haveSameSignatures(op, operation)) {
+							&& haveSameProperties(op.getOwnedParameters(), operation.getOwnedParameters())) {
 						return true;
 					}
 				}
@@ -579,7 +579,7 @@ public abstract class UmlUtils {
 			for (Operation op : cls.getOwnedOperations()) {
 				if (haveSameNames(op, operation)
 						&& haveSameType(op, operation)
-						&& haveSameSignatures(op, operation)) {
+						&& haveSameProperties(op.getOwnedParameters(), operation.getOwnedParameters())) {
 					return true;
 				}
 			}
@@ -623,7 +623,7 @@ public abstract class UmlUtils {
 		for (Operation oper : cls.getOwnedOperations()) {
 			if (haveSameNames(op, oper)
 					&& haveSameType(op, oper)
-					&& haveSameSignatures(op, oper)) {
+					&& haveSameProperties(op.getOwnedParameters(), oper.getOwnedParameters())) {
 				equalOperation = oper;
 				break;
 			}
@@ -755,7 +755,7 @@ public abstract class UmlUtils {
 			if (! haveSameType(op, oper)) continue;
 			if (! haveSameVisibilities(op, oper)) continue;
 			if (! haveSameMultiplicities(op, oper)) continue;
-			if (! haveSameSignatures(op, oper)) continue;
+			if (! haveSameProperties(op.getOwnedParameters(), oper.getOwnedParameters())) continue;
 			if (! haveSameLeafProperties(op, oper)) continue;
 			if (! haveSameQueryProperties(op, oper)) continue;
 			if (! haveSameAbstractProperties(op, oper)) continue;

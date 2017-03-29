@@ -2,6 +2,54 @@
 <plugin>
 <extension point="org.eclipse.emf.refactor.refactorings">
 <refactoring
+      controller="org.eclipse.emf.refactor.refactorings.uml24.unfoldexit.RefactoringController"
+      gui="org.eclipse.emf.refactor.refactorings.uml24.unfoldexit.RefactoringGuiHandler"
+      id="org.eclipse.emf.refactor.refactorings.uml24.unfoldexit"
+      menulabel="Unfold Exit Action"
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring
+      controller="org.eclipse.emf.refactor.refactorings.uml24.groupstates.RefactoringController"
+      gui="org.eclipse.emf.refactor.refactorings.uml24.groupstates.RefactoringGuiHandler"
+      id="org.eclipse.emf.refactor.refactorings.uml24.groupstates"
+      menulabel="Group States"
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring
+      controller="org.eclipse.emf.refactor.refactorings.uml24.foldoutgoing.RefactoringController"
+      gui="org.eclipse.emf.refactor.refactorings.uml24.foldoutgoing.RefactoringGuiHandler"
+      id="org.eclipse.emf.refactor.refactorings.uml24.foldoutgoing"
+      menulabel="Fold outgoing transition"
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring
+      controller="org.eclipse.emf.refactor.refactorings.uml24.unfoldoutgoing.RefactoringController"
+      gui="org.eclipse.emf.refactor.refactorings.uml24.unfoldoutgoing.RefactoringGuiHandler"
+      id="org.eclipse.emf.refactor.refactorings.uml24.unfoldoutgoing"
+      menulabel="Unfold outgoing transition"
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring
+      controller="org.eclipse.emf.refactor.refactorings.uml24.splittransitionintoinit.RefactoringController"
+      gui="org.eclipse.emf.refactor.refactorings.uml24.splittransitionintoinit.RefactoringGuiHandler"
+      id="org.eclipse.emf.refactor.refactorings.uml24.splittransitionintoinit"
+      menulabel="Split transition into initial"
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring
+      controller="org.eclipse.emf.refactor.refactorings.uml24.moveintocomposite.RefactoringController"
+      gui="org.eclipse.emf.refactor.refactorings.uml24.moveintocomposite.RefactoringGuiHandler"
+      id="org.eclipse.emf.refactor.refactorings.uml24.moveintocomposite"
+      menulabel="Move state into composite"
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring
+      controller="org.eclipse.emf.refactor.refactorings.uml24.moveoutofcomposite.RefactoringController"
+      gui="org.eclipse.emf.refactor.refactorings.uml24.moveoutofcomposite.RefactoringGuiHandler"
+      id="org.eclipse.emf.refactor.refactorings.uml24.moveoutofcomposite"
+      menulabel="Move state out of composite"
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring
+      controller="org.eclipse.emf.refactor.refactorings.uml24.samelabel.RefactoringController"
+      gui="org.eclipse.emf.refactor.refactorings.uml24.samelabel.RefactoringGuiHandler"
+      id="org.eclipse.emf.refactor.refactorings.uml24.samelabel"
+      menulabel="Same Label"
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring
       controller="org.eclipse.emf.refactor.refactorings.uml24.addparameter.RefactoringController"
       gui="org.eclipse.emf.refactor.refactorings.uml24.addparameter.RefactoringGuiHandler"
       id="org.eclipse.emf.refactor.refactorings.uml24.addparameter"
@@ -32,6 +80,18 @@
       menulabel="Move Operation"
       namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
 <refactoring 
+      controller="org.eclipse.emf.refactor.refactorings.uml24.pullupattribute.RefactoringController" 
+      gui="org.eclipse.emf.refactor.refactorings.uml24.pullupattribute.RefactoringGuiHandler" 
+      id="org.eclipse.emf.refactor.refactorings.uml24.pullupattribute" 
+      menulabel="Pull Up Attribute" 
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring 
+      controller="org.eclipse.emf.refactor.refactorings.uml24.pushdownattribute.RefactoringController" 
+      gui="org.eclipse.emf.refactor.refactorings.uml24.pushdownattribute.RefactoringGuiHandler" 
+      id="org.eclipse.emf.refactor.refactorings.uml24.pushdownattribute" 
+      menulabel="Push Down Attribute" 
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring 
       controller="org.eclipse.emf.refactor.refactorings.uml24.pullupoperation.RefactoringController" 
       gui="org.eclipse.emf.refactor.refactorings.uml24.pullupoperation.RefactoringGuiHandler" 
       id="org.eclipse.emf.refactor.refactorings.uml24.pullupoperation" 
@@ -56,6 +116,12 @@
       menulabel="Remove Empty Subclass" 
       namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
 <refactoring 
+      controller="org.eclipse.emf.refactor.refactorings.uml24.removeemptysuperclass.RefactoringController" 
+      gui="org.eclipse.emf.refactor.refactorings.uml24.removeemptysuperclass.RefactoringGuiHandler" 
+      id="org.eclipse.emf.refactor.refactorings.uml24.removeemptysuperclass" 
+      menulabel="Remove Empty Superclass" 
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring 
       controller="org.eclipse.emf.refactor.refactorings.uml24.removeparameter.RefactoringController" 
       gui="org.eclipse.emf.refactor.refactorings.uml24.removeparameter.RefactoringGuiHandler" 
       id="org.eclipse.emf.refactor.refactorings.uml24.removeparameter" 
@@ -72,6 +138,30 @@
       gui="org.eclipse.emf.refactor.refactorings.uml24.renameoperation.RefactoringGuiHandler" 
       id="org.eclipse.emf.refactor.refactorings.uml24.renameoperation" 
       menulabel="Rename Operation" 
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring 
+      controller="org.eclipse.emf.refactor.refactorings.uml24.mergeassociations.RefactoringController" 
+      gui="org.eclipse.emf.refactor.refactorings.uml24.mergeassociations.RefactoringGuiHandler" 
+      id="org.eclipse.emf.refactor.refactorings.uml24.mergeassociations" 
+      menulabel="Merge associations" 
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring 
+      controller="org.eclipse.emf.refactor.refactorings.uml24.splitassociations.RefactoringController" 
+      gui="org.eclipse.emf.refactor.refactorings.uml24.splitassociations.RefactoringGuiHandler" 
+      id="org.eclipse.emf.refactor.refactorings.uml24.splitassociations" 
+      menulabel="Split association" 
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring 
+      controller="org.eclipse.emf.refactor.refactorings.uml24.insertgeneralizable.RefactoringController" 
+      gui="org.eclipse.emf.refactor.refactorings.uml24.insertgeneralizable.RefactoringGuiHandler" 
+      id="org.eclipse.emf.refactor.refactorings.uml24.insertgeneralizable" 
+      menulabel="Insert Generalizable Element" 
+      namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
+<refactoring 
+      controller="org.eclipse.emf.refactor.refactorings.uml24.removegeneralizable.RefactoringController" 
+      gui="org.eclipse.emf.refactor.refactorings.uml24.removegeneralizable.RefactoringGuiHandler" 
+      id="org.eclipse.emf.refactor.refactorings.uml24.removegeneralizable" 
+      menulabel="Remove Generalizable Element" 
       namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML"/>
 </extension>
 </plugin>

@@ -86,6 +86,202 @@
 </extension>
 
 <extension point="org.eclipse.emf.refactor.metrics">
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.entryactivity"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_EntryActivity"
+	metric_context="State"
+	metric_description="Number of entry activity (0 or 1)"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_entryActivity">
+</metric>
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.doactivity"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_DoActivity"
+	metric_context="State"
+	metric_description="Number of do activity (0 or 1)"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_doActivity">
+</metric>
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.exitactivity"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_ExitActivity"
+	metric_context="State"
+	metric_description="Number of exit activity (0 or 1)"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_exitActivity">
+</metric>
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.nit"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_NIT"
+	metric_context="State"
+	metric_description="Number of incoming transitions"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_NIT">
+</metric>
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.not"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_NOT"
+	metric_context="State"
+	metric_description="Number of outgoing transitions"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_NOT">
+</metric>
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.nsss"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_NSSS"
+	metric_context="State"
+	metric_description="Number of states that are direct source states of entering transitions into this state"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_NSSS">
+</metric>
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.nts"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_NTS"
+	metric_context="State"
+	metric_description="Number of states that are direct target states of exiting transitions from this state"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_NTS">
+</metric>
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.nits"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_NITS"
+	metric_context="State"
+	metric_description="The total number of transitions where both the source state and the target state are within the enclosure of this composite state"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_NITS">
+</metric>
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.snl"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_SNL"
+	metric_context="State"
+	metric_description="State nesting level"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_SNL">
+</metric>
+<metric id="org.eclipse.emf.refactor.metrics.uml24.state.ndeit"
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlst.St_NDEIT"
+	metric_context="State"
+	metric_description="Number of different events on the incoming transitions"
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+	metric_name="st_NDEIT">
+</metric>
+</extension>
+
+<extension point="org.eclipse.emf.refactor.metrics">
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.ns" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NS" 
+	metric_context="StateMachine" 
+	metric_description="Number of states" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NS">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.nss" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NSS" 
+	metric_context="StateMachine" 
+	metric_description="Number of simple states" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NSS">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.ncs" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NCS" 
+	metric_context="StateMachine" 
+	metric_description="Number of composite states" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NCS">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.nsms" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NSMS" 
+	metric_context="StateMachine" 
+	metric_description="Number of submachine states" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NSMS">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.nr" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NR" 
+	metric_context="StateMachine" 
+	metric_description="Number of regions" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NR">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.nps" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NPS" 
+	metric_context="StateMachine" 
+	metric_description="Number of pseudostates" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NPS">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.nt" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NT" 
+	metric_context="StateMachine" 
+	metric_description="Number of transitions" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NT">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.nde" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NDE" 
+	metric_context="StateMachine" 
+	metric_description="Number of different events, signals" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NDE">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.ne" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NE" 
+	metric_context="StateMachine" 
+	metric_description="Number of events, signals" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NE">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.uue" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.UUE" 
+	metric_context="StateMachine" 
+	metric_description="Number of unused events" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="UUE">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.ng" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NG" 
+	metric_context="StateMachine" 
+	metric_description="Number of guards" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NG">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.na" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NA" 
+	metric_context="StateMachine" 
+	metric_description="Number of activities" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NA">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.nta" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.NTA" 
+	metric_context="StateMachine" 
+	metric_description="Number of effects (transition activities)" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="NTA">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.maxsnl" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.MAXSNL" 
+	metric_context="StateMachine" 
+	metric_description="Maximum value of state nesting level" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="MAXSNL">
+</metric>
+<metric 
+	id="org.eclipse.emf.refactor.metrics.uml24.cc" 
+	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlsmachine.CC" 
+	metric_context="StateMachine" 
+	metric_description="Cyclomatic complexity (Transitions - States + 2)" 
+	metric_metamodel="http://www.eclipse.org/uml2/4.0.0/UML" 
+	metric_name="CC">
+</metric>
+</extension>
+
+<extension point="org.eclipse.emf.refactor.metrics">
 <metric id="org.eclipse.emf.refactor.metrics.uml24.neipo" 
 	metric_calculate_class="org.eclipse.emf.refactor.metrics.uml24.umlop.NEIPO" 
 	metric_context="Operation" 

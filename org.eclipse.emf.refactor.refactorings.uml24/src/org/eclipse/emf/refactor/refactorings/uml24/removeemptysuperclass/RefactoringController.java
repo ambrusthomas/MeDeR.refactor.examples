@@ -15,11 +15,15 @@ import org.eclipse.emf.refactor.refactoring.interfaces.IController;
 import org.eclipse.emf.refactor.refactoring.interfaces.IDataManagement;
 import org.eclipse.emf.refactor.refactoring.runtime.ltk.LtkEmfRefactoringProcessorAdapter;
 import org.eclipse.emf.refactor.refactorings.uml24.UmlUtils;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.RefactoringProcessor;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Package;
+
+import com.google.inject.Guice;
 
 
 public final class RefactoringController implements IController{
@@ -110,6 +114,12 @@ public final class RefactoringController implements IController{
 				new InternalRefactoringProcessor(this.selection);
 	}	
 	
+	private List<IGraphicalEditPart> editParts;
+	@Override
+	public void setEditParts(List<IGraphicalEditPart> editParts) {
+		this.editParts = editParts;
+	}
+	
 	/**
 	 * Returns a Runnable object that executes the model refactoring.
 	 * @return Runnable object that executes the model refactoring.
@@ -131,12 +141,26 @@ public final class RefactoringController implements IController{
 				for (Class cl : allClasses) {
 					if (cl.getSuperClasses().contains(selectedEObject)){
 						Generalization gen = cl.getGeneralization(selectedEObject);
-						cl.getGeneralizations().remove(gen);
+//						cl.getGeneralizations().remove(gen);
 					}
 				}
 				// execute: delete selected class from owning package
 				Package p = selectedEObject.getPackage();
 				p.getPackagedElements().remove(selectedEObject);
+//				Runnable asyncExec = new Runnable() {
+//					
+//
+//					public void run() {
+//						RefactorCommandContainer container = new RefactorCommandContainer("Remove empty super class", editParts);
+//						DiagramRefreshService d = Guice.createInjector().getInstance(DiagramRefreshService.class);
+//						
+//							
+//						container.removeElement(selectedEObject);
+//						d.executeCommandContainer(container);
+//						
+//												}
+//					};
+//					Display.getDefault().asyncExec(asyncExec);
 			}
 		};
 	}

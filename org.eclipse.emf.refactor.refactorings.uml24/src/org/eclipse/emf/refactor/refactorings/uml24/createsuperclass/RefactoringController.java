@@ -11,10 +11,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.refactor.refactoring.core.Refactoring;
+import org.eclipse.emf.refactor.refactoring.extension.EmfNotifierController;
 import org.eclipse.emf.refactor.refactoring.interfaces.IController;
 import org.eclipse.emf.refactor.refactoring.interfaces.IDataManagement;
 import org.eclipse.emf.refactor.refactoring.runtime.ltk.LtkEmfRefactoringProcessorAdapter;
 import org.eclipse.emf.refactor.refactorings.uml24.UmlUtils;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.RefactoringProcessor;
 import org.eclipse.uml2.uml.Class;
@@ -24,7 +26,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 
-public final class RefactoringController implements IController{
+public final class RefactoringController extends EmfNotifierController implements IController{
 
 	/**
 	 * Refactoring supported by the controller.
@@ -50,6 +52,12 @@ public final class RefactoringController implements IController{
 	 * @generated
 	 */
 	private InternalRefactoringProcessor refactoringProcessor = null;
+	
+	private List<IGraphicalEditPart> editParts;
+	@Override
+	public void setEditParts(List<IGraphicalEditPart> editParts) {
+		this.editParts = editParts;
+	}
 	
 	/**
 	 * Gets the Refactoring supported by the controller.
@@ -117,14 +125,8 @@ public final class RefactoringController implements IController{
 	 * @return Runnable object that executes the model refactoring.
 	 * @generated
 	 */
-	private Runnable applyRefactoring() {
-		return new Runnable() {				
-			/**
-			 * @see java.lang.Runnable#run()
-			 * @generated
-			 */
-			@Override
-			public void run() {
+	@Override
+	protected void refactoringBody() {
 				org.eclipse.uml2.uml.Class selectedEObject = 
 					(org.eclipse.uml2.uml.Class) dataManagement.
 							getInPortByName(dataManagement.SELECTEDEOBJECT).getValue();
@@ -132,6 +134,7 @@ public final class RefactoringController implements IController{
 					(String) dataManagement.getInPortByName("className").getValue();
 				// execute
 				Package p = selectedEObject.getPackage();
+				Generalization gen = null;
 				if (p.getPackagedElement(className) == null) {
 					// the owning package does not own a class with the inserted name
 					// create new class named 'className'
@@ -139,18 +142,13 @@ public final class RefactoringController implements IController{
 					newSuperclass.setName(className);
 					p.getPackagedElements().add(newSuperclass);
 					// create generalization from context class to new class
-					Generalization gen = UMLFactory.eINSTANCE.createGeneralization();
-					selectedEObject.getGeneralizations().add(gen);
-					gen.setGeneral(newSuperclass);					
+					gen = selectedEObject.createGeneralization(newSuperclass);
+
 				} else { // the owning package owns a class with the inserted name
 					Class existingClass = (Class) p.getPackagedElement(className);
 					// create generalization from context class to existing class
-					Generalization gen = UMLFactory.eINSTANCE.createGeneralization();
-					selectedEObject.getGeneralizations().add(gen);
-					gen.setGeneral(existingClass);		
+					gen = selectedEObject.createGeneralization(existingClass);
 				}
-			}
-		};
 	}
 
 	/**

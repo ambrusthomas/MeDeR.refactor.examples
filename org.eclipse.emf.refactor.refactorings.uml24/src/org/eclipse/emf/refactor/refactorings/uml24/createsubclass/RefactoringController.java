@@ -9,19 +9,25 @@ package org.eclipse.emf.refactor.refactorings.uml24.createsubclass;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.refactor.refactoring.core.Refactoring;
+import org.eclipse.emf.refactor.refactoring.extension.EmfNotifierController;
 import org.eclipse.emf.refactor.refactoring.interfaces.IController;
 import org.eclipse.emf.refactor.refactoring.interfaces.IDataManagement;
 import org.eclipse.emf.refactor.refactoring.runtime.ltk.LtkEmfRefactoringProcessorAdapter;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.RefactoringProcessor;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 
-public final class RefactoringController implements IController{
+public final class RefactoringController extends EmfNotifierController implements IController{
 
 	/**
 	 * Refactoring supported by the controller.
@@ -109,37 +115,94 @@ public final class RefactoringController implements IController{
 				new InternalRefactoringProcessor(this.selection);
 	}	
 	
+	private List<IGraphicalEditPart> editParts;
+	@Override
+	public void setEditParts(List<IGraphicalEditPart> editParts) {
+		this.editParts = editParts;
+	}
+	
 	/**
 	 * Returns a Runnable object that executes the model refactoring.
 	 * @return Runnable object that executes the model refactoring.
 	 * @generated
 	 */
-	private Runnable applyRefactoring() {
-		return new Runnable() {				
-			/**
-			 * @see java.lang.Runnable#run()
-			 * @generated
-			 */
-			@Override
-			public void run() {
-				startTimeRecording();	
-				org.eclipse.uml2.uml.Class selectedEObject = 
-					(org.eclipse.uml2.uml.Class) dataManagement.
-							getInPortByName(dataManagement.SELECTEDEOBJECT).getValue();
-				String className =
-					(String) dataManagement.getInPortByName("className").getValue();
-				// execute: create new class named 'className'
-				Class subclass = UMLFactory.eINSTANCE.createClass();
-				subclass.setName(className);
-				selectedEObject.getPackage().getPackagedElements().add(subclass);
-				// execute: create generalization from new class to context class
-				Generalization gen = UMLFactory.eINSTANCE.createGeneralization();
-				subclass.getGeneralizations().add(gen);
-				gen.setGeneral(selectedEObject);
-				stopTimeRecording();
-			}
-		};
+	private Generalization gen;
+	
+//	private Runnable applyRefactoring() {
+//		return new Runnable() {				
+//			/**
+//			 * @see java.lang.Runnable#run()
+//			 * @generated
+//			 */
+//			@Override
+//			public void run() {
+				
+				
+				
+//				selectedEObject.eContainer().eAdapters().add(new AdapterImpl() {
+//					private boolean react = false;
+//					
+//					public void notifyChanged(Notification notification) {
+						
+//						Display.getDefault().asyncExec(new Runnable() {
+//							public void run() {
+//								if (!react) {
+//									if (notification.)
+//								} else {
+//									System.out.println(notification);
+////									System.out.println(notification.getNewValue());
+//									System.out.println(notification.getNewValue());
+//									System.out.println(notification.getOldValue());
+//									if (gen != null) {
+//										DropObjectsRequest dor = new DropObjectsRequest();
+//										dor.setObjects(Arrays.asList(gen));
+//										dor.setLocation(new Point(0,0));
+//										Command c = editParts.get(0).getParent().getCommand(dor);
+//										if (c == null) {
+//											System.out.println("Ajjaj");
+//										} else {
+//											c.execute();
+//										}
+//									}
+//								}
+								
+//							}
+//						});
+//					}
+//				});
+//				Comment tmpComm = UMLFactory.eINSTANCE.createComment();
+//				tmpComm.setBody("EMF_Refactor");;
+//				selectedEObject.getPackage().eContents().add(tmpComm);
+//				selectedEObject.getPackage().addKeyword("EMF_Refactor");
+//				selectedEObject.getPackage().set
+//				Comment tmpComm = UMLFactory.eINSTANCE.createComment();
+//				tmpComm.setBody("EMF Refactor");
+//				Package pekidzs = selectedEObject.getPackage();
+//				pekidzs.getOwnedComments().add(tmpComm);
+//								pekidzs.getOwnedComments().remove(tmpComm);
+//			}
+//		};
+//	}
+	
+	
+	private void refreshPapyrusElements(Generalization gen) {
+		
+	
 	}
+//	private void refreshPapyrusElements(Generalization gen) {
+//		if (editParts != null) {
+////			Runnable asyncExec = new Runnable() {
+////				public void run() {
+//					RefactorCommandContainer container = new RefactorCommandContainer("Create subclass", editParts);
+//					DiagramRefreshService d = Guice.createInjector().getInstance(DiagramRefreshService.class);
+//					
+//					container.addElementStable(Arrays.asList(gen));
+//					d.executeCommandContainer(container);
+////				}
+////			};
+////			Display.getDefault().asyncExec(asyncExec);
+//		}
+//	}
 
 	/**
 	 * Internal class for providing an instance of a LTK RefactoringProcessor 
@@ -155,7 +218,8 @@ public final class RefactoringController implements IController{
 		 * @generated
 		 */
 		private InternalRefactoringProcessor(List<EObject> selection){
-				super(getParent(), selection, applyRefactoring());				
+				super(getParent(), selection, applyRefactoring());		
+				
 		}
 			
 		/**
@@ -174,7 +238,6 @@ public final class RefactoringController implements IController{
 				String msg = "This refactoring can only be applied" +
 								" on classes which are owned by a package!";
 				if (selectedEObject.getPackage() == null) result.addFatalError(msg);
-				if (! result.isOK()) stopTimeRecording();
 				return result;
 		}
 		
@@ -196,22 +259,33 @@ public final class RefactoringController implements IController{
 				String msg = "The owning package already owns an element named '" + className + "'!";
 				Package p = selectedEObject.getPackage();
 				if (p.getPackagedElement(className) != null) result.addFatalError(msg);
-				if (! result.isOK()) stopTimeRecording();
 				return result;
 		}
 		
 	}
-	
-	long zstVorher;
-	long zstNachher;
-	
-	private void startTimeRecording() {
-		zstVorher = System.currentTimeMillis();
+
+	@Override
+	protected void refactoringBody() {
+		org.eclipse.uml2.uml.Class selectedEObject = 
+				(org.eclipse.uml2.uml.Class) dataManagement.
+						getInPortByName(dataManagement.SELECTEDEOBJECT).getValue();
+		String className =
+				(String) dataManagement.getInPortByName("className").getValue();
+			// execute: create new class named 'className'
+		
+		
+		Class subclass = UMLFactory.eINSTANCE.createClass();
+		subclass.setName(className);
+		
+		selectedEObject.getPackage().getPackagedElements().add(subclass);
+//		subclass.setPackage(selectedEObject.getPackage());
+		
+		gen = subclass.createGeneralization(selectedEObject);
+
+		
+			// execute: create generalization from new class to context class
+		
 	}
 
-	private void stopTimeRecording() {
-		zstNachher = System.currentTimeMillis();
-		System.out.println("Time needed (withoud loading): " + ((zstNachher - zstVorher)) + " ms");
-	}
 
 }

@@ -21,7 +21,7 @@ Bundle-Activator: org.eclipse.emf.refactor.refactorings.ecore.Activato
  r
 Bundle-SymbolicName: org.eclipse.emf.refactor.refactorings.ecore;singl
  eton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Version: 0.9.0
 Import-Package: org.eclipse.emf.compare.util
 

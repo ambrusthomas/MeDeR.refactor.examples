@@ -206,7 +206,7 @@ public final class RefactoringController implements IController{
 					Operation inheritedOperation = (Operation) namedElement;
 					if (inheritedOperation.getName().equals(owningOperation.getName()) 
 							&& UmlUtils.haveSameTypes(inheritedOperation, owningOperation)
-							 && UmlUtils.haveSameSignatures(inheritedOperation, owningOperation)) {
+							 && UmlUtils.haveSameProperties(inheritedOperation.getOwnedParameters(), owningOperation.getOwnedParameters())) {
 						// re-add parameter and return
 						owningOperation.getOwnedParameters().add(pos, param);
 						return true;
@@ -228,7 +228,7 @@ public final class RefactoringController implements IController{
 				 if (op != owningOperation) {
 					 if (op.getName().equals(owningOperation.getName()) 
 							 && UmlUtils.haveSameTypes(op, owningOperation)
-							 && UmlUtils.haveSameSignatures(op, owningOperation)) {
+							 && UmlUtils.haveSameProperties(op.getOwnedParameters(), owningOperation.getOwnedParameters())) {
 						// re-add parameter and return
 						owningOperation.getOwnedParameters().add(pos, param);
 						return true;

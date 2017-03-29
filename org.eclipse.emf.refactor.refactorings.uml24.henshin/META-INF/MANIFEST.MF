@@ -20,5 +20,5 @@ Bundle-Activator: org.eclipse.emf.refactor.refactorings.uml24.henshin.
  Activator
 Bundle-SymbolicName: org.eclipse.emf.refactor.refactorings.uml24.hensh
  in;singleton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 

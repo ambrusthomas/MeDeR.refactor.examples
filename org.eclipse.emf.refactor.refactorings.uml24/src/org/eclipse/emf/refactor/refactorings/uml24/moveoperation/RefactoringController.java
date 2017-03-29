@@ -240,7 +240,7 @@ public final class RefactoringController implements IController{
 					Operation inheritedOperation = (Operation) namedElement;
 					if (inheritedOperation.getName().equals(operation.getName())
 							&& UmlUtils.haveSameTypes(inheritedOperation, operation)
-							 && UmlUtils.haveSameSignatures(inheritedOperation, operation)) {
+							 && UmlUtils.haveSameProperties(inheritedOperation.getOwnedParameters(), operation.getOwnedParameters())) {
 						 return true;
 					}
 				}
@@ -252,7 +252,7 @@ public final class RefactoringController implements IController{
 			for (Operation op : cl.getOwnedOperations()) {	
 				if (op.getName().equals(operation.getName()) 
 						&& UmlUtils.haveSameTypes(op, operation)
-						&& UmlUtils.haveSameSignatures(op, operation)) {
+						&& UmlUtils.haveSameProperties(op.getOwnedParameters(), operation.getOwnedParameters())) {
 					return true;
 				}
 			}

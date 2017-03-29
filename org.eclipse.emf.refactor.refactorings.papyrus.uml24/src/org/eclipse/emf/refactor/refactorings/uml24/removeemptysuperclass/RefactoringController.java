@@ -17,14 +17,18 @@ import org.eclipse.emf.refactor.refactoring.interfaces.IDataManagement;
 import org.eclipse.emf.refactor.refactoring.papyrus.managers.PapyrusManager;
 import org.eclipse.emf.refactor.refactoring.runtime.ltk.LtkEmfRefactoringProcessorAdapter;
 import org.eclipse.emf.refactor.refactorings.uml24.UmlUtils;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Connector;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.RefactoringProcessor;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Package;
+
+import com.google.inject.Guice;
 
 
 public final class RefactoringController implements IController{
@@ -114,7 +118,11 @@ public final class RefactoringController implements IController{
 		this.refactoringProcessor = 
 				new InternalRefactoringProcessor(this.selection);
 	}	
-	
+	private List<IGraphicalEditPart> editParts;
+	@Override
+	public void setEditParts(List<IGraphicalEditPart> editParts) {
+		this.editParts = editParts;
+	}
 	/**
 	 * Returns a Runnable object that executes the model refactoring.
 	 * @return Runnable object that executes the model refactoring.
@@ -138,11 +146,11 @@ public final class RefactoringController implements IController{
 					if (cl.getSuperClasses().contains(selectedEObject)){
 						Generalization gen = cl.getGeneralization(selectedEObject);
 						// remove edge from diagram
-						if (view != null) {
-							removeConnector(gen);
-						}
+//						if (view != null) {
+//							removeConnector(gen);
+//						}
 						// remove generalization
-						cl.getGeneralizations().remove(gen);
+//						cl.getGeneralizations().remove(gen);
 					}
 				}
 				// execute: delete selected class from owning package
@@ -151,10 +159,31 @@ public final class RefactoringController implements IController{
 				if (view != null) {
 					System.out.println("--> View: " + view);
 					View owningView = (View) view.eContainer();
-					owningView.removeChild(view);
+//					owningView.removeChild(view);
 				}
 				// remove class
-				p.getPackagedElements().remove(selectedEObject);
+//				p.getPackagedElements().remove(selectedEObject);
+				
+				
+//				Runnable asyncExec = new Runnable() {
+//					public void run() {
+//						RefactorCommandContainer container = new RefactorCommandContainer("Fold outgoing transitions", editParts);
+//						DiagramRefreshService d = Guice.createInjector().getInstance(DiagramRefreshService.class);
+//						org.eclipse.uml2.uml.Class selectedEObject = 
+//								(org.eclipse.uml2.uml.Class) dataManagement.
+//										getInPortByName(dataManagement.SELECTEDEOBJECT).getValue();
+//						List<Class> allClasses = UmlUtils.getAllClasses(selectedEObject.getModel());
+//						for (Class cl : allClasses) {
+//							if (cl.getSuperClasses().contains(selectedEObject)){
+//								Generalization gen = cl.getGeneralization(selectedEObject);
+//								container.removeElement(gen);
+//							}
+//						}
+//						container.removeElement(selectedEObject);
+//						d.executeCommandContainer(container);
+//					}
+//				};
+//				Display.getDefault().asyncExec(asyncExec);
 			}
 			
 			private void removeConnector(Generalization gen) {

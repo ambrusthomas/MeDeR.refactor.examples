@@ -9,5 +9,5 @@ Bundle-Activator: org.eclipse.emf.refactor.metrics.uml24.ocl.Activator
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.eclipse.emf.refactor.metrics.uml24.ocl;single
  ton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 

@@ -52,6 +52,28 @@
             modelsmell_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
             modelsmell_name="Primitive Obsession (Primitive Type)">
       </modelsmell>
+      <modelsmell
+            id="org.eclipse.emf.refactor.smells.uml24.hotstatein"
+            modelsmell_description="The model contains a state with more incoming transitions than the specified limit."
+            modelsmell_finderclass="org.eclipse.emf.refactor.smells.uml24.metricbased.HotStateIn"
+            modelsmell_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+            modelsmell_name="Hot State (Incoming Transitions)">
+      </modelsmell>
+      <modelsmell
+            id="org.eclipse.emf.refactor.smells.uml24.hotstateout"
+            modelsmell_description="The model contains a state with more outgoing transitions than the specified limit."
+            modelsmell_finderclass="org.eclipse.emf.refactor.smells.uml24.metricbased.HotStateOut"
+            modelsmell_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+            modelsmell_name="Hot State (Outgoing Transitions)">
+      </modelsmell>
+      <modelsmell
+            id="org.eclipse.emf.refactor.smells.uml24.deepnesting"
+            modelsmell_description="The model contains a state that is nested more deeply than the specified limit."
+            modelsmell_finderclass="org.eclipse.emf.refactor.smells.uml24.metricbased.DeepNesting"
+            modelsmell_metamodel="http://www.eclipse.org/uml2/4.0.0/UML"
+            modelsmell_name="Deep Nesting"
+            modelsmell_defaultlimit="három">
+      </modelsmell>
    </extension>
 
 </plugin>

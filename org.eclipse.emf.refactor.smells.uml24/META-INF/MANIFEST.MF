@@ -11,5 +11,5 @@ Bundle-Activator: org.eclipse.emf.refactor.smells.uml24.Activator
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.eclipse.emf.refactor.smells.uml24;singleton:=
  true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 

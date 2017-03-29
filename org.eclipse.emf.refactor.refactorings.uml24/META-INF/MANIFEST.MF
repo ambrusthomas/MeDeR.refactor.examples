@@ -1,9 +1,20 @@
 Manifest-Version: 1.0
-Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.co
- re.expressions,org.eclipse.emf.ecore,org.eclipse.emf.ecore.change,org
- .eclipse.ltk.core.refactoring,org.eclipse.ltk.ui.refactoring,org.ecli
- pse.emf.refactor.refactoring,org.eclipse.emf.refactor.refactoring.run
- time,org.junit;bundle-version="4.8.1",org.eclipse.uml2.uml
+Require-Bundle: org.eclipse.ltk.core.refactoring,
+ org.eclipse.ltk.ui.refactoring,
+ org.eclipse.emf.refactor.refactoring,
+ org.eclipse.emf.refactor.refactoring.runtime,
+ org.junit,
+ org.eclipse.uml2.uml,
+ org.eclipse.papyrus.infra.gmfdiag.common,
+ com.google.inject,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.ide;bundle-version="3.10.2",
+ org.eclipse.papyrus.uml.diagram.clazz;bundle-version="1.0.2",
+ org.eclipse.papyrus.infra.core,
+ org.eclipse.emf.refactor.service;bundle-version="1.0.0",
+ org.eclipse.emf.refactor.refactoring.papyrus,
+ org.eclipse.papyrus.emf.facet.custom.metamodel,
+ org.eclipse.gef
 Bundle-ActivationPolicy: lazy
 Bundle-Version: 0.9.0
 Bundle-Name: RefactoringsUML24
@@ -12,6 +23,6 @@ Bundle-Activator: org.eclipse.emf.refactor.refactorings.uml24.Activato
  r
 Bundle-SymbolicName: org.eclipse.emf.refactor.refactorings.uml24;singl
  eton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.emf.refactor.refactorings.uml24
 

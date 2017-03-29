@@ -10,5 +10,5 @@ Bundle-Activator: org.eclipse.emf.refactor.metrics.uml24.henshin.Activ
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.eclipse.emf.refactor.metrics.uml24.henshin;si
  ngleton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 
